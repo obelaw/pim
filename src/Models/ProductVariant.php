@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Obelaw\Pim\Base\ModelBase;
 use Obelaw\Pim\Traits\HasMedia;
+use Obelaw\Pim\Traits\HasPrices;
 
 class ProductVariant extends ModelBase
 {
     use HasFactory;
     use HasMedia;
+    use HasPrices;
 
     protected $fillable = [
         'product_id',

@@ -9,11 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Obelaw\Pim\Base\ModelBase;
 use Obelaw\Pim\Models\AttributeValue;
 use Obelaw\Pim\Traits\HasMedia;
+use Obelaw\Pim\Traits\HasPrices;
 
 class Product extends ModelBase
 {
     use HasFactory;
     use HasMedia;
+    use HasPrices;
 
     protected $fillable = [
         'sku',
