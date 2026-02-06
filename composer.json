@@ -1,0 +1,16 @@
+{
+    "name": "obelaw/pim",
+    "description": "PIM",
+    "autoload": {
+        "psr-4": {
+            "Obelaw\\Pim\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Karim Mohamed",
+            "email": "komicho1996@gmail.com"
+        }
+    ],
+    "require": {}
+}
