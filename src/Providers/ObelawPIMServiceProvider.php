@@ -3,6 +3,7 @@
 namespace Obelaw\Pim\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Obelaw\Pim\Services\PIMService;
 
 class ObelawPIMServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class ObelawPIMServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('pbelaw.stack.pim', PIMService::class);
     }
 
     /**
@@ -25,7 +26,7 @@ class ObelawPIMServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
         }
     }
 }
