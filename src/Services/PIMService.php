@@ -2,34 +2,22 @@
 
 namespace Obelaw\Pim\Services;
 
-use Obelaw\Pim\Data\ProductDTO;
+use Obelaw\Pim\Repositories\CategoryRepository;
 use Obelaw\Pim\Repositories\ProductRepository;
-use Obelaw\Pim\Resources\ProductResource;
-use Obelaw\Pim\Services\UomConverter;
 
 /**
  * use proxy pattern
  */
 class PIMService
 {
-    public function __construct(
-        protected ProductRepository $productRepository
-    ) {}
-
-    public function createProduct(ProductDTO $data)
+    public function products(): ProductRepository
     {
-        return $this->productRepository->create($data);
+        return app(ProductRepository::class);
     }
 
-    public function getProduct(int $id)
+    public function categories(): CategoryRepository
     {
-        $product = $this->productRepository->find($id);
-
-        if (!$product) {
-            return null;
-        }
-
-        return new ProductResource($product);
+        return app(CategoryRepository::class);
     }
 
     public function uomConverter(): UomConverter
