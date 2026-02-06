@@ -3,6 +3,7 @@
 namespace Obelaw\Pim\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Obelaw\Pim\Base\ModelBase;
@@ -18,6 +19,7 @@ class Product extends ModelBase
         'sku',
         'name',
         'product_type',
+        'uom_id',
         'description',
         'price',
         'special_price',
@@ -39,6 +41,11 @@ class Product extends ModelBase
         return $this->attributeValues->mapWithKeys(function ($item) {
             return [$item->attribute->name => $item->value];
         });
+    }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UnitOfMeasure::class, 'uom_id');
     }
 
     public function variants(): HasMany

@@ -21,6 +21,7 @@ class ProductVariant extends ModelBase
         'special_price_from',
         'special_price_to',
         'stock',
+        'uom_id',
     ];
 
     protected $casts = [
@@ -35,6 +36,11 @@ class ProductVariant extends ModelBase
         return $this->attributeValues->mapWithKeys(function ($item) {
             return [$item->attribute->name => $item->value];
         });
+    }
+
+    public function uom(): BelongsTo
+    {
+        return $this->belongsTo(UnitOfMeasure::class);
     }
 
     public function product(): BelongsTo

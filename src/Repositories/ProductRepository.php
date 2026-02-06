@@ -24,6 +24,7 @@ class ProductRepository
                     'special_price_from' => $data->specialPriceFrom,
                     'special_price_to' => $data->specialPriceTo,
                     'is_active' => $data->isActive,
+                    'uom_id' => $data->uomId,
                 ]);
 
                 if ($product->product_type === 'simple' && !empty($data->attributes)) {
@@ -49,6 +50,7 @@ class ProductRepository
                             'special_price_from' => $variantData->specialPriceFrom,
                             'special_price_to' => $variantData->specialPriceTo,
                             'stock' => $variantData->stock,
+                            'uom_id' => $variantData->uomId,
                         ]);
 
                         if (!empty($variantData->attributes)) {
@@ -68,9 +70,11 @@ class ProductRepository
     {
         return Product::with([
             'variants.attributeValues.attribute',
+            'variants.uom',
             'attributeValues.attribute',
             'categories',
             'media',
+            'uom',
         ])->find($id);
     }
 }

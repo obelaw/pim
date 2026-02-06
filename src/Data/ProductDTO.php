@@ -14,6 +14,7 @@ class ProductDTO
         public ?string $specialPriceFrom = null,
         public ?string $specialPriceTo = null,
         public bool $isActive = true,
+        public ?int $uomId = null,
         public array $attributes = [],
         public array $categories = [],
         /** @var MediaDTO[] */
@@ -33,6 +34,7 @@ class ProductDTO
             'special_price_from' => $this->specialPriceFrom,
             'special_price_to' => $this->specialPriceTo,
             'is_active' => $this->isActive,
+            'uom_id' => $this->uomId,
             'attributes' => $this->attributes,
             'categories' => $this->categories,
             'media' => array_map(fn($item) => $item->toArray(), $this->media),
