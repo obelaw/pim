@@ -93,3 +93,44 @@ it('can create a product with categories', function () {
         'category_id' => $parent->id,
     ]);
 });
+
+it('can create a product with media', function () {
+    $repository = new ProductRepository();
+
+    $dto = new ProductDTO(
+        sku: 'PRODUCT-MEDIA',
+        name: 'Product With Media',
+        productType: 'simple',
+        price: 99.99,
+        media: [
+            new MediaDTO(
+                filePath: 'images/product-main.jpg',
+                fileType: 'image',
+                isPrimary: true
+            ),
+            new MediaDTO(
+                filePath: 'manuals/user-guide.pdf',
+                fileType: 'manual'
+            )
+        ]
+    );
+
+    $product = $repository->create($dto);
+
+    expect($product->media)->toHaveCount(2);
+
+    $primaryImage = $product->primaryImage;
+    expect($primaryImage)->not->toBeNull()
+        ->file_path->toBe('images/product-main.jpg');
+
+    $manuals = $product->manuals()->get();
+    expect($manuals)->toHaveCount(1)
+        ->first()->file_path->toBe('manuals/user-guide.pdf');
+
+    $this->assertDatabaseHas((new MigrationBaseTest)->getPrefix() . 'media', [
+        'mediable_id' => $product->id, 
+        'mediable_type' => Product::class,
+        'file_path' => 'images/product-main.jpg',
+        'is_primary' => true,
+    ]);
+});

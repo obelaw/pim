@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Obelaw\Pim\Base\ModelBase;
 use Obelaw\Pim\Models\AttributeValue;
+use Obelaw\Pim\Traits\HasMedia;
 
 class Product extends ModelBase
 {
     use HasFactory;
+    use HasMedia;
 
     protected $fillable = [
         'sku',

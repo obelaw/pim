@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Obelaw\Pim\Base\ModelBase;
+use Obelaw\Pim\Traits\HasMedia;
 
 class ProductVariant extends ModelBase
 {
     use HasFactory;
+    use HasMedia;
+
     protected $fillable = [
         'product_id',
         'sku',
