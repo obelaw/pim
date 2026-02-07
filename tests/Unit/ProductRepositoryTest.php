@@ -1,6 +1,5 @@
 <?php
 
-use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Obelaw\Pim\Data\MediaDTO;
 use Obelaw\Pim\Data\ProductDTO;

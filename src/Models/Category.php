@@ -37,7 +37,7 @@ class Category extends ModelBase
     {
         return $this->belongsToMany(
             Product::class,
-            $this->prefix . 'category_product',
+            $this->prefix . 'pim_category_product',
             'category_id',
             'product_id'
         )->withTimestamps();

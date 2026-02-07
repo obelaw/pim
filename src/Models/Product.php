@@ -61,7 +61,7 @@ class Product extends ModelBase
     {
         return $this->belongsToMany(
             Category::class,
-            $this->prefix . 'category_product',
+            $this->prefix . 'pim_category_product',
             'product_id',
             'category_id'
         )->withTimestamps();
@@ -71,7 +71,7 @@ class Product extends ModelBase
     {
         return $this->belongsToMany(
             AttributeValue::class,
-            $this->prefix . 'product_attribute_values',
+            $this->prefix . 'pim_product_attribute_values',
             'product_id',
             'attribute_value_id'
         )->withTimestamps();
