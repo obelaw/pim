@@ -2,10 +2,10 @@
 
 namespace Obelaw\Pim\Repositories;
 
-use Illuminate\Support\Facades\DB;
-use Obelaw\Pim\Models\Product;
-use Obelaw\Pim\Data\ProductDTO;
 use Exception;
+use Illuminate\Support\Facades\DB;
+use Obelaw\Pim\Data\ProductDTO;
+use Obelaw\Pim\Models\Product;
 
 class ProductRepository
 {

@@ -10,12 +10,14 @@ use Obelaw\Pim\Base\ModelBase;
 use Obelaw\Pim\Models\AttributeValue;
 use Obelaw\Pim\Traits\HasMedia;
 use Obelaw\Pim\Traits\HasPrices;
+use Obelaw\Pim\Traits\HasStock;
 
 class Product extends ModelBase
 {
     use HasFactory;
     use HasMedia;
     use HasPrices;
+    use HasStock;
 
     protected $fillable = [
         'sku',
