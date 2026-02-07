@@ -58,7 +58,7 @@ class ProductVariant extends ModelBase
     {
         return $this->belongsToMany(
             AttributeValue::class,
-            $this->prefix . 'product_variant_attribute_values',
+            $this->prefix . 'pim_product_variant_attribute_values',
             'product_variant_id',
             'attribute_value_id'
         )->withTimestamps();
